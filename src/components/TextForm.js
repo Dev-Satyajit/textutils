@@ -36,8 +36,8 @@ export default function TextForm(props) {
         <button className="btn btn-primary mx-3" onClick={lowerCase}>
           Convert to lowercase
         </button>
-        <button type="button" class="btn btn-outline-dark" onClick={clearText}>
-          Clear
+        <button type="button" class="btn btn-outline-primary" onClick={clearText}>
+          Clear text
         </button>
       </div>
     </div>

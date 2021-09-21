@@ -16,7 +16,7 @@ export default function TextForm(props) {
     setText(event.target.value);
   };
 
-  const [text, setText] = useState("Enter your text here");
+  const [text, setText] = useState("");
 
   if (text.length === 0) {
     var word = 0;

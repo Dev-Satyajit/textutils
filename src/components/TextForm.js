@@ -16,7 +16,14 @@ export default function TextForm(props) {
     setText(event.target.value);
   };
 
-  const [text, setText] = useState("");
+  const [text, setText] = useState("Enter your text here");
+
+  if (text.length === 0) {
+    var word = 0;
+  } else {
+    word = text.split(" ").length;
+  }
+  
   return (
     <div className="textForm">
       <div className="container my-3">
@@ -36,9 +43,21 @@ export default function TextForm(props) {
         <button className="btn btn-primary mx-3" onClick={lowerCase}>
           Convert to lowercase
         </button>
-        <button type="button" class="btn btn-outline-primary" onClick={clearText}>
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          onClick={clearText}
+        >
           Clear text
         </button>
+      </div>
+      <div className="container">
+        <h1>Text summery</h1>
+        <p>
+          {word} words and {text.length} characters
+        </p>
+        <h2>Preview</h2>
+        <p>{text}</p>
       </div>
     </div>
   );

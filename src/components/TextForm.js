@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Helmet } from "react-helmet";
 export default function TextForm(props) {
   const upperCase = () => {
     let newText = text.toUpperCase();
@@ -27,6 +27,9 @@ export default function TextForm(props) {
   const [myStyle, setMyStyle] = useState({
     color: "inherit",
   });
+  const [myStyle1, setMyStyle1] = useState({
+    color: "inherit",
+  });
   const [btnType, setBtnType] = useState("btn btn-primary mx-2");
   const [clrBtnType, setClrBtnType] = useState("btn btn-outline-primary mx-2");
   const [btnTxt, setBtnTxt] = useState("Enable dark mode");
@@ -36,7 +39,12 @@ export default function TextForm(props) {
       setBtnTxt("Disable dark mode");
       setMyStyle({
         color: "white",
-        backgroundColor: "black",
+        backgroundColor: "#18191A",
+      });
+      setMyStyle1({
+        color: "white",
+        backgroundColor: "#242526",
+        border: "none",
       });
       setBtnType("btn btn-outline-light mx-2");
       setClrBtnType("btn btn-light mx-2");
@@ -45,6 +53,7 @@ export default function TextForm(props) {
       setMyStyle({
         color: "inherit",
       });
+      setMyStyle1({});
       setBtnType("btn btn-primary mx-2");
       setClrBtnType("btn btn-outline-primary mx-2");
     }
@@ -52,6 +61,9 @@ export default function TextForm(props) {
 
   return (
     <div className="textForm" style={myStyle}>
+      <Helmet>
+        <title>TextUtils | Home</title>
+      </Helmet>
       <button className={btnType + " my-3"} onClick={toggleMode}>
         {btnTxt}
       </button>
@@ -64,7 +76,7 @@ export default function TextForm(props) {
             onChange={handleOnChange}
             id="myBox"
             rows="8"
-            style={myStyle}
+            style={myStyle1}
           ></textarea>
         </div>
         <button className={btnType} onClick={upperCase}>

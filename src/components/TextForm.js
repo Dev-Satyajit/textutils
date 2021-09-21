@@ -23,9 +23,38 @@ export default function TextForm(props) {
   } else {
     word = text.split(" ").length;
   }
-  
+
+  const [myStyle, setMyStyle] = useState({
+    color: "inherit",
+  });
+  const [btnType, setBtnType] = useState("btn btn-primary mx-2");
+  const [clrBtnType, setClrBtnType] = useState("btn btn-outline-primary mx-2");
+  const [btnTxt, setBtnTxt] = useState("Enable dark mode");
+
+  const toggleMode = () => {
+    if (myStyle.color === "inherit") {
+      setBtnTxt("Disable dark mode");
+      setMyStyle({
+        color: "white",
+        backgroundColor: "black",
+      });
+      setBtnType("btn btn-outline-light mx-2");
+      setClrBtnType("btn btn-light mx-2");
+    } else {
+      setBtnTxt("Enable dark mode");
+      setMyStyle({
+        color: "inherit",
+      });
+      setBtnType("btn btn-primary mx-2");
+      setClrBtnType("btn btn-outline-primary mx-2");
+    }
+  };
+
   return (
-    <div className="textForm">
+    <div className="textForm" style={myStyle}>
+      <button className={btnType + " my-3"} onClick={toggleMode}>
+        {btnTxt}
+      </button>
       <div className="container my-3">
         <h1>{props.heading}</h1>
         <div className="mb-3">
@@ -35,19 +64,16 @@ export default function TextForm(props) {
             onChange={handleOnChange}
             id="myBox"
             rows="8"
+            style={myStyle}
           ></textarea>
         </div>
-        <button className="btn btn-primary" onClick={upperCase}>
+        <button className={btnType} onClick={upperCase}>
           Convert to UPPERCASE
         </button>
-        <button className="btn btn-primary mx-3" onClick={lowerCase}>
+        <button className={btnType} onClick={lowerCase}>
           Convert to lowercase
         </button>
-        <button
-          type="button"
-          class="btn btn-outline-primary"
-          onClick={clearText}
-        >
+        <button type="button" className={clrBtnType} onClick={clearText}>
           Clear text
         </button>
       </div>

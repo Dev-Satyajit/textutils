@@ -12,10 +12,10 @@ function App() {
       <Router>
         <Navbar title="TextUtils" />
         <Switch>
-          <Route path="/about">
+          <Route path="/textutils/about">
             <About />
           </Route>
-          <Route path="/">
+          <Route path="/textutils/">
             <TextForm heading="Enter your text here" />
           </Route>
         </Switch>
